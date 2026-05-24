@@ -19,7 +19,7 @@ const schemaLD = {
   "@type": "LocalBusiness",
   "name": "ICAM Conciergerie",
   "description": description,
-  "url": "https://icam-conciergerie.com",
+  "url": "https://www.icam-conciergerie.com",
   "telephone": "+32471596624",
   "email": "contact@icam-conciergerie.com",
   "address": {
@@ -50,7 +50,7 @@ const schemaLD = {
     <meta property="og:description" content="Coordination complète de votre location Airbnb et Booking, partout en Belgique. Estimation gratuite en ligne." />
     <meta property="og:image" content="/icam-logo.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://icam-conciergerie.com" />
+    <meta property="og:url" content="https://www.icam-conciergerie.com" />
     <meta property="og:locale" content="fr_BE" />
 
     <!-- Twitter Card -->
@@ -59,6 +59,7 @@ const schemaLD = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/icam-logo.png" />
 
+    <link rel="canonical" href={`https://www.icam-conciergerie.com${Astro.url.pathname}`} />
     <title>{title}</title>
 
     <!-- Favicon -->

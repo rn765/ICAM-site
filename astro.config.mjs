@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://icam-conciergerie.com',
+  site: 'https://www.icam-conciergerie.com',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
