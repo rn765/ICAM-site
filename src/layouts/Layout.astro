@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'ICAM Conciergerie — Gestion locative courte durée en Belgique',
-  description = 'ICAM Conciergerie prend en charge la coordination complète de votre location courte durée Airbnb et Booking, partout en Belgique. Estimation gratuite en ligne.'
+  title = 'ICAM Conciergerie Bruxelles — Gestion Airbnb & Booking conforme BEE 2026',
+  description = '+25% de revenus locatifs sur votre Airbnb à Bruxelles. Estimation gratuite en 30 secondes. 100% conforme BEE & taxe de séjour 2026.'
 } = Astro.props;
 
 // Schema.org LocalBusiness JSON-LD
@@ -47,7 +47,7 @@ const schemaLD = {
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="Coordination complète de votre location Airbnb et Booking, partout en Belgique. Estimation gratuite en ligne." />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content="/icam-logo.png" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.icam-conciergerie.com" />
@@ -79,6 +79,15 @@ const schemaLD = {
 
     <!-- META_PIXEL_PLACEHOLDER -->
     <!-- Insérer ici le Meta Pixel lors de l'activation des campagnes -->
+
+    <!-- Google Analytics 4 — G-JLPNK6GMFT -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLPNK6GMFT" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JLPNK6GMFT');
+    </script>
   </head>
   <body>
     <!-- Skip link pour navigation au clavier -->
@@ -106,6 +115,17 @@ const schemaLD = {
 
       document.querySelectorAll('.fade-in-section').forEach((el) => {
         observer.observe(el);
+      });
+
+      // ===== GA4 CLICK TRACKING =====
+      // Tracking par délégation sur tous les éléments [data-track]
+      document.addEventListener('click', (e) => {
+        const el = (e.target as Element).closest('[data-track]') as HTMLElement | null;
+        if (!el) return;
+        if (typeof (window as any).gtag !== 'function') return;
+        (window as any).gtag('event', el.dataset.track, {
+          location: el.dataset.trackLocation ?? 'unknown',
+        });
       });
 
       // Nav sticky — ombre au scroll

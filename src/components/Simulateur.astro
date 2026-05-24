@@ -131,6 +131,8 @@ const whatsappSimUrl = "https://wa.me/32471596624?text=Bonjour%2C%20j%27ai%20uti
         class="w-full py-4 px-6 font-sans font-semibold text-base text-white rounded-sm hover:opacity-90 active:scale-[0.99] transition-all"
         style="background-color:var(--color-accent);"
         aria-label="Calculer l'estimation de revenus"
+        data-track="click_simulator"
+        data-track-location="simulateur"
       >
         Estimer mes revenus
       </button>
@@ -324,6 +326,16 @@ const whatsappSimUrl = "https://wa.me/32471596624?text=Bonjour%2C%20j%27ai%20uti
       void resultBox.offsetHeight;
       resultBox.style.opacity = '1';
       resultBox.style.transform = 'translateY(0)';
+    }
+
+    // GA4 — simulator_completed
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'simulator_completed', {
+        type_bien: typeBien,
+        commune,
+        standing,
+        avg_monthly: avg,
+      });
     }
 
     // Scroll vers le résultat
