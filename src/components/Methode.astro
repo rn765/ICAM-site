@@ -1,0 +1,88 @@
+---
+// Section Notre Méthode — split-screen desktop (timeline gauche + image droite)
+const steps = [
+  {
+    num: '01',
+    title: 'Estimation gratuite et personnalisée',
+    body: "Estimez en quelques clics le potentiel locatif de votre bien avec notre simulateur en ligne. Pour une analyse approfondie, nous organisons un premier échange (visio ou rendez-vous) avec conseils d'optimisation et préparation à la location."
+  },
+  {
+    num: '02',
+    title: 'Mise en place (5 à 10 jours)',
+    body: "Séance photo professionnelle, rédaction des annonces, création de votre fiche sur Airbnb, Booking.com et autres plateformes, configuration du calendrier, tarification initiale, organisation des accès (clés, codes, badges)."
+  },
+  {
+    num: '03',
+    title: 'Exploitation au quotidien',
+    body: "Optimisation dynamique des prix selon la saisonnalité, les événements locaux et la concurrence. Communication professionnelle avec les voyageurs avant, pendant et après chaque séjour. Organisation des check-in/check-out. Coordination du ménage et du linge. Coordination des incidents et interventions de maintenance courante. Réponse aux avis voyageurs sous 48 heures."
+  },
+  {
+    num: '04',
+    title: 'Reporting régulier',
+    body: "Rapport trimestriel détaillé : nuitées, taux d'occupation, revenus générés. Sur Airbnb, notre commission est prélevée automatiquement en tant que co-hôte. Sur Booking et autres plateformes, vous percevez 100% des paiements et nous émettons une facture mensuelle pour notre commission. Récapitulatif mensuel transmis dans tous les cas."
+  },
+];
+---
+
+<section
+  id="methode"
+  class="bg-white py-12 md:py-20 px-4"
+  aria-labelledby="methode-heading"
+>
+  <div class="max-w-6xl mx-auto">
+    <!-- Titre centré -->
+    <div class="text-center mb-14 fade-in-section">
+      <h2
+        id="methode-heading"
+        class="font-serif font-semibold text-[var(--color-primary)]"
+        style="font-family:'Fraunces',serif;font-size:clamp(1.75rem,3vw,2.5rem);"
+      >Notre méthode</h2>
+    </div>
+
+    <!-- Split-screen : timeline gauche + image droite — stack sur mobile -->
+    <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+
+      <!-- Colonne gauche : timeline -->
+      <div class="w-full md:w-1/2">
+        <ol class="space-y-10" aria-label="Étapes de notre méthode">
+          {steps.map((s, i) => (
+            <li
+              class="fade-in-section flex gap-5 items-start"
+              style={`transition-delay:${i * 100}ms;`}
+            >
+              <!-- Numéro or laiton, Fraunces gros -->
+              <span
+                class="font-serif font-semibold flex-shrink-0 leading-none"
+                style="font-family:'Fraunces',serif;color:var(--color-accent);font-size:clamp(2.5rem,4vw,3.5rem);"
+                aria-hidden="true"
+              >{s.num}</span>
+              <div class="pt-2">
+                <h3
+                  class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-2"
+                  style="font-family:'Fraunces',serif;"
+                >{s.title}</h3>
+                <p class="font-sans text-[var(--color-text)] opacity-70 leading-relaxed text-sm md:text-base">{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- Colonne droite : image illustration — s'affiche en premier sur mobile -->
+      <div class="w-full md:w-1/2 order-first md:order-last fade-in-section">
+        <div class="relative rounded-sm overflow-hidden" style="height:clamp(280px,50vw,560px);">
+          <img
+            src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=900&q=85"
+            alt="Intérieur appartement européen soigné — parquet, ambiance lumineuse"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&q=85'"
+          />
+          <!-- Léger voile pour adoucir -->
+          <div class="absolute inset-0" style="background:rgba(15,30,61,0.08);" aria-hidden="true"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

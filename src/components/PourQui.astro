@@ -1,0 +1,77 @@
+---
+// Section À qui s'adresse ICAM — 3 cards, icônes grandes or laiton, Belgique
+const cards = [
+  {
+    title: "Vous possédez un bien meublé en Belgique",
+    body: "Appartement, maison, studio ou villa. Votre bien est meublé et prêt à recevoir des voyageurs, à Bruxelles, en Flandre ou en Wallonie.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>`
+  },
+  {
+    title: "Vous voulez gagner du temps, pas le perdre",
+    body: "Annonces, voyageurs, ménage, linge, check-in, check-out, maintenance courante : nous prenons tout en charge. Vous percevez vos revenus sans intervenir au quotidien.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`
+  },
+  {
+    title: "Vous voulez un interlocuteur sérieux et joignable",
+    body: "Un seul contact pour votre bien. Communication transparente, rapports réguliers, respect strict des meilleures pratiques du secteur.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>`
+  }
+];
+---
+
+<section
+  id="pour-qui"
+  class="py-12 md:py-20 px-4"
+  style="background-color:#EDE6D7;"
+  aria-labelledby="pour-qui-heading"
+>
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14 fade-in-section">
+      <h2
+        id="pour-qui-heading"
+        class="font-serif font-semibold text-[var(--color-primary)] mb-4"
+        style="font-family:'Fraunces',serif;font-size:clamp(1.75rem,3vw,2.5rem);"
+      >
+        À qui s'adresse ICAM Conciergerie
+      </h2>
+      <p class="font-sans text-[var(--color-text)] opacity-70 max-w-xl mx-auto text-base leading-relaxed">
+        Nous accompagnons des propriétaires partout en Belgique qui partagent trois caractéristiques :
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {cards.map((c, i) => (
+        <div
+          class="fade-in-section flex flex-col items-center text-center p-6 md:p-10 rounded-sm border border-[var(--color-border)] bg-white shadow-lg"
+          style={`transition-delay:${i * 100}ms;`}
+        >
+          <!-- Icône grande, or laiton -->
+          <div
+            class="icon-wrapper mb-5 md:mb-6 flex items-center justify-center"
+            style="color:var(--color-accent);"
+            set:html={c.icon}
+          />
+          <h3
+            class="font-serif font-semibold text-[var(--color-primary)] text-lg mb-3"
+            style="font-family:'Fraunces',serif;"
+          >{c.title}</h3>
+          <p class="font-sans text-sm text-[var(--color-text)] opacity-70 leading-relaxed">{c.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Icônes PourQui — 40px mobile, 52px desktop */
+  .icon-wrapper :global(svg) {
+    width: 40px;
+    height: 40px;
+  }
+  @media (min-width: 768px) {
+    .icon-wrapper :global(svg) {
+      width: 52px;
+      height: 52px;
+    }
+  }
+</style>

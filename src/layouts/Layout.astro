@@ -1,0 +1,119 @@
+---
+// Layout principal — ICAM Conciergerie
+import '../styles/global.css';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'ICAM Conciergerie — Gestion locative courte durée en Belgique',
+  description = 'ICAM Conciergerie prend en charge la coordination complète de votre location courte durée Airbnb et Booking, partout en Belgique. Estimation gratuite en ligne.'
+} = Astro.props;
+
+// Schema.org LocalBusiness JSON-LD
+const schemaLD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ICAM Conciergerie",
+  "description": description,
+  "url": "https://icam-conciergerie.com",
+  "telephone": "+32471596624",
+  "email": "contact@icam-conciergerie.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenue Louise 367",
+    "addressLocality": "Bruxelles",
+    "postalCode": "1050",
+    "addressCountry": "BE"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Bruxelles"
+  },
+  "serviceType": "Conciergerie immobilière, Gestion location courte durée Airbnb"
+};
+---
+
+<!doctype html>
+<html lang="fr-BE">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="conciergerie Airbnb Belgique, gestion locative Bruxelles, conciergerie Bruxelles, location courte durée Belgique" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Coordination complète de votre location Airbnb et Booking, partout en Belgique. Estimation gratuite en ligne." />
+    <meta property="og:image" content="/icam-logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://icam-conciergerie.com" />
+    <meta property="og:locale" content="fr_BE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/icam-logo.png" />
+
+    <title>{title}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/icam-logo.png" />
+    <link rel="apple-touch-icon" href="/icam-logo.png" />
+
+    <!-- Google Fonts : Fraunces (titres) + Inter (corps) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaLD)} />
+
+    <!-- META_PIXEL_PLACEHOLDER -->
+    <!-- Insérer ici le Meta Pixel lors de l'activation des campagnes -->
+  </head>
+  <body>
+    <!-- Skip link pour navigation au clavier -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <slot />
+
+    <!-- Bouton flottant WhatsApp — présent sur toutes les pages -->
+    <WhatsAppFloat />
+
+    <!-- ===== SCRIPTS GLOBAUX ===== -->
+    <script>
+      // Intersection Observer — animations fade-in au scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll('.fade-in-section').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Nav sticky — ombre au scroll
+      const nav = document.getElementById('main-nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('shadow-md', window.scrollY > 10);
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+---
+// Section FAQ — accordéon vanilla JS, Q/R refondues (Belgique, rôle prestataire)
+const faqs = [
+  {
+    q: "Quels biens prenez-vous en gestion ?",
+    a: "Tous les biens meublés éligibles à la location courte durée en Belgique : appartements, maisons, studios, villas. Que vous soyez à Bruxelles, en Flandre ou en Wallonie, nous étudions votre projet sans engagement."
+  },
+  {
+    q: "Quelle commission prélevez-vous exactement ?",
+    a: "Notre commission varie selon la taille du bien : 20% pour un studio ou 1 chambre, 22% pour un 2 chambres, 25% pour un 3 chambres, 30% pour une villa ou un grand bien. Elle est calculée sur le montant total reçu par le propriétaire pour chaque réservation, frais de ménage inclus."
+  },
+  {
+    q: "Y a-t-il des frais de mise en place ?",
+    a: "Oui, des frais uniques sont facturés au lancement : ils couvrent la visite du bien, la séance photo professionnelle, la création et l'optimisation de vos annonces, et la configuration de tous les outils opérationnels. Le montant exact dépend du type de bien et vous est communiqué lors de notre premier échange."
+  },
+  {
+    q: "Quels sont vos délais de mise en service ?",
+    a: "Comptez 5 à 10 jours ouvrables entre la signature du contrat et la mise en ligne effective de la première annonce, à condition que tous les accès (clés, codes, badges) et autorisations nous soient remis."
+  },
+  {
+    q: "Sur quelles plateformes mon bien sera-t-il listé ?",
+    a: "Airbnb en priorité, Booking.com en complément, et d'autres plateformes selon le profil du bien. Les calendriers sont synchronisés automatiquement pour éviter toute double réservation."
+  },
+  {
+    q: "Qui s'occupe de l'enregistrement régional et de la taxe de séjour ?",
+    a: "Le propriétaire reste légalement responsable des démarches administratives liées à son bien (enregistrement régional, taxe de séjour, déclarations fiscales). Nous vous informons des obligations applicables à votre situation et vous orientons vers les bons interlocuteurs."
+  },
+  {
+    q: "Puis-je utiliser mon bien quand je veux ?",
+    a: "Oui. Vous bloquez les dates dont vous avez besoin via votre espace propriétaire ou simplement par message. Aucune commission n'est facturée sur ces nuits."
+  },
+  {
+    q: "Comment et quand suis-je payé ?",
+    a: "Sur Airbnb, nous intervenons en tant que co-hôte : la commission ICAM est automatiquement prélevée à chaque réservation et vous recevez directement votre part. Sur Booking et autres plateformes, vous percevez 100% des paiements et nous vous facturons notre commission mensuellement."
+  },
+  {
+    q: "Que se passe-t-il si un voyageur dégrade le bien ?",
+    a: "Tous les voyageurs sont vérifiés en amont. Sur Airbnb, la garantie AirCover for Hosts couvre les dégradations matérielles. Sur Booking et autres plateformes, une caution est demandée à chaque voyageur. Nous gérons l'ensemble des démarches de remboursement pour vous."
+  },
+  {
+    q: "Quel est l'engagement contractuel ?",
+    a: "Le contrat est conclu pour une durée initiale de 6 mois, renouvelable tacitement par périodes de 3 mois. Résiliable par chaque partie avec un préavis de 60 jours."
+  },
+];
+---
+
+<section
+  id="faq"
+  class="bg-white py-12 md:py-20 px-4"
+  aria-labelledby="faq-heading"
+>
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14 fade-in-section">
+      <h2
+        id="faq-heading"
+        class="font-serif font-semibold text-[var(--color-primary)]"
+        style="font-family:'Fraunces',serif;font-size:clamp(1.75rem,3vw,2.5rem);"
+      >Questions fréquentes</h2>
+    </div>
+
+    <!-- Accordéon — ouverture exclusive, accessible (aria) -->
+    <dl class="divide-y divide-[var(--color-border)]" role="list">
+      {faqs.map((faq, i) => (
+        <div class="faq-item fade-in-section py-1" role="listitem">
+          <dt>
+            <button
+              class="faq-trigger w-full flex items-center justify-between gap-4 py-5 text-left font-sans font-medium text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-trigger-${i}`}
+            >
+              <span class="text-base leading-snug">{faq.q}</span>
+              <span
+                class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center text-[var(--color-accent)] text-xl font-light"
+                aria-hidden="true"
+              >+</span>
+            </button>
+          </dt>
+          <dd>
+            <div
+              class="faq-answer"
+              id={`faq-answer-${i}`}
+              role="region"
+              aria-labelledby={`faq-trigger-${i}`}
+            >
+              <p class="font-sans text-[var(--color-text)] opacity-70 leading-relaxed text-base pb-5 pr-10">
+                {faq.a}
+              </p>
+            </div>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<script>
+  // FAQ accordéon — un seul item ouvert à la fois
+  const triggers = document.querySelectorAll('.faq-trigger');
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      const item = trigger.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = item?.querySelector('.faq-icon');
+
+      // Fermer tous les autres
+      triggers.forEach((other) => {
+        if (other !== trigger) {
+          const otherItem = other.closest('.faq-item');
+          other.setAttribute('aria-expanded', 'false');
+          otherItem?.querySelector('.faq-answer')?.classList.remove('open');
+          const otherIcon = otherItem?.querySelector('.faq-icon');
+          if (otherIcon) otherIcon.textContent = '+';
+        }
+      });
+
+      // Basculer l'item courant
+      if (isOpen) {
+        trigger.setAttribute('aria-expanded', 'false');
+        answer?.classList.remove('open');
+        if (icon) icon.textContent = '+';
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        answer?.classList.add('open');
+        if (icon) icon.textContent = '×';
+      }
+    });
+  });
+</script>

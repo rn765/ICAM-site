@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Mentions légales — ICAM Conciergerie"
+  description="Mentions légales d'ICAM GROUP SRL, éditeur du site ICAM Conciergerie."
+>
+  <!-- Nav simplifiée — retour accueil -->
+  <header class="sticky top-0 z-40 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a
+        href="/"
+        class="flex items-baseline gap-1.5 group"
+        aria-label="Retour à l'accueil ICAM Conciergerie"
+      >
+        <span
+          class="font-serif font-semibold text-xl text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors"
+          style="font-family:'Fraunces',serif;"
+        >ICAM</span>
+        <span class="font-sans text-sm text-[var(--color-text)] opacity-70">Conciergerie</span>
+      </a>
+      <a
+        href="/"
+        class="font-sans text-sm text-[var(--color-text)] opacity-60 hover:text-[var(--color-accent)] hover:opacity-100 transition-colors flex items-center gap-1"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Retour à l'accueil
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content" class="bg-[var(--color-bg)] py-16 px-4">
+    <article class="max-w-3xl mx-auto prose-custom">
+
+      <h1
+        class="font-serif font-semibold text-[var(--color-primary)] mb-10"
+        style="font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);"
+      >Mentions légales</h1>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Éditeur du site</h2>
+        <div class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed space-y-1 text-base">
+          <p><strong class="text-[var(--color-text)] opacity-100">ICAM GROUP SRL</strong></p>
+          <p>Nom commercial : ICAM Conciergerie</p>
+          <p>N° d'entreprise : BE 0762.846.701</p>
+          <p>Siège social : Avenue Louise 367, 1050 Bruxelles, Belgique</p>
+          <p>Représentée par : Haddi Issam, Administrateur</p>
+          <p>Email : <a href="mailto:contact@icam-conciergerie.com" class="text-[var(--color-accent)] hover:underline">contact@icam-conciergerie.com</a></p>
+          <p>Téléphone : <a href="tel:+32471596624" class="text-[var(--color-accent)] hover:underline">+32 471 59 66 24</a></p>
+          <p>Assujetti à la TVA belge.</p>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Hébergement</h2>
+        <div class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed space-y-1 text-base">
+          <p>Le site est hébergé par <strong class="text-[var(--color-text)] opacity-100">Cloudflare, Inc.</strong></p>
+          <p>101 Townsend St, San Francisco, CA 94107, États-Unis.</p>
+          <p><a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:underline">https://www.cloudflare.com</a></p>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Propriété intellectuelle</h2>
+        <p class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed text-base">
+          L'ensemble des éléments du site (textes, images, logo, charte graphique, code) est la propriété exclusive d'ICAM GROUP SRL, sauf mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable est interdite.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Droit applicable</h2>
+        <p class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed text-base">
+          Le présent site est soumis au droit belge. Tout litige relatif à l'utilisation du site relève de la compétence exclusive des tribunaux de l'arrondissement judiciaire francophone de Bruxelles.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Footer simplifié -->
+  <footer class="py-8 px-4 border-t border-[var(--color-border)]" style="background-color:#EBE5DB;">
+    <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-sans text-xs text-[var(--color-text)] opacity-50">
+        © 2026 ICAM GROUP SRL · Tous droits réservés
+      </p>
+      <nav class="flex gap-4 flex-wrap justify-center" aria-label="Liens légaux">
+        <a href="/mentions-legales" class="font-sans text-xs text-[var(--color-accent)]">Mentions légales</a>
+        <a href="/politique-confidentialite" class="font-sans text-xs text-[var(--color-text)] opacity-60 hover:text-[var(--color-accent)] hover:opacity-100 transition-colors">Confidentialité</a>
+        <a href="/cookies" class="font-sans text-xs text-[var(--color-text)] opacity-60 hover:text-[var(--color-accent)] hover:opacity-100 transition-colors">Cookies</a>
+      </nav>
+    </div>
+  </footer>
+</Layout>

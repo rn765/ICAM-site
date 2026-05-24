@@ -1,0 +1,52 @@
+---
+// Page principale — composition complète ICAM Conciergerie (v2)
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import TrustBand from '../components/TrustBand.astro';
+import PourQui from '../components/PourQui.astro';
+import Methode from '../components/Methode.astro';
+import PourquoiNous from '../components/PourquoiNous.astro';
+import CadreLegal from '../components/CadreLegal.astro';
+import Tarif from '../components/Tarif.astro';
+import Simulateur from '../components/Simulateur.astro';
+import FAQ from '../components/FAQ.astro';
+import CTAFinal from '../components/CTAFinal.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTABar from '../components/MobileCTABar.astro';
+---
+
+<Layout>
+  <!-- Navigation sticky -->
+  <Nav />
+
+  <!-- Contenu principal -->
+  <main id="main-content">
+    <!-- 1. Hero pleine hauteur -->
+    <Hero />
+    <!-- 2. Bande Trust — plateformes -->
+    <TrustBand />
+    <!-- 3. À qui s'adresse ICAM -->
+    <PourQui />
+    <!-- 4. Notre méthode (split-screen) -->
+    <Methode />
+    <!-- 5. Ce qui nous distingue (fond bleu nuit) -->
+    <PourquoiNous />
+    <!-- 6. Cadre légal (fond crème) -->
+    <CadreLegal />
+    <!-- 7. Tarifs -->
+    <Tarif />
+    <!-- 8. Simulateur de revenus (fond bleu nuit) -->
+    <Simulateur />
+    <!-- 9. FAQ accordéon -->
+    <FAQ />
+    <!-- 10. CTA final (fond bleu nuit) -->
+    <CTAFinal />
+  </main>
+
+  <!-- Pied de page -->
+  <Footer />
+
+  <!-- Barre CTA sticky mobile (masquée sur desktop) -->
+  <MobileCTABar />
+</Layout>

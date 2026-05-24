@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ===== DESIGN SYSTEM — ICAM Conciergerie ===== */
+@layer base {
+  :root {
+    --color-primary: #0F1E3D;    /* bleu nuit luxe */
+    --color-bg: #F4EFE6;         /* crème chaud, fond principal */
+    --color-accent: #B89968;     /* or laiton mat, CTA */
+    --color-text: #1C1C1E;       /* charcoal */
+    --color-card: #FFFFFF;       /* fond cards pricing */
+    --color-border: #E8DFD0;     /* bordures subtiles */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-in-section {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Espace pour la barre CTA sticky mobile */
+    padding-bottom: 64px;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+  }
+
+  /* Focus visible pour accessibilité */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ===== ANIMATIONS FADE-IN AU SCROLL ===== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== ACCORDÉON FAQ ===== */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms ease-out;
+}
+
+.faq-answer.open {
+  max-height: 500px;
+}
+
+.faq-icon {
+  transition: transform 300ms ease;
+}
+
+/* ===== NAV OVERLAY MOBILE ===== */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-primary);
+  z-index: 50;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-overlay.open {
+  display: flex;
+}
+
+/* ===== SKIP LINK ACCESSIBILITÉ ===== */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 0;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  z-index: 9999;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}

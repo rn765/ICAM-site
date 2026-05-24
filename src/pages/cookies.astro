@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Politique de cookies — ICAM Conciergerie"
+  description="Politique d'utilisation des cookies sur le site ICAM Conciergerie."
+>
+  <header class="sticky top-0 z-40 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-baseline gap-1.5 group" aria-label="Retour à l'accueil ICAM Conciergerie">
+        <span class="font-serif font-semibold text-xl text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors" style="font-family:'Fraunces',serif;">ICAM</span>
+        <span class="font-sans text-sm text-[var(--color-text)] opacity-70">Conciergerie</span>
+      </a>
+      <a href="/" class="font-sans text-sm text-[var(--color-text)] opacity-60 hover:text-[var(--color-accent)] hover:opacity-100 transition-colors flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Retour à l'accueil
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content" class="bg-[var(--color-bg)] py-16 px-4">
+    <article class="max-w-3xl mx-auto">
+
+      <h1
+        class="font-serif font-semibold text-[var(--color-primary)] mb-10"
+        style="font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);"
+      >Politique de cookies</h1>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Qu'est-ce qu'un cookie ?</h2>
+        <p class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed text-base">
+          Un cookie est un petit fichier texte déposé sur votre appareil lors de votre visite sur un site web.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Cookies utilisés sur ce site</h2>
+        <p class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed text-base">
+          Ce site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement (préférences de navigation, sécurité). Aucun cookie publicitaire ni de suivi tiers n'est utilisé à ce jour.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Vos choix</h2>
+        <p class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed text-base">
+          Vous pouvez à tout moment configurer votre navigateur pour bloquer ou supprimer les cookies. La désactivation peut affecter certaines fonctionnalités du site.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="font-serif font-semibold text-[var(--color-primary)] text-xl mb-4" style="font-family:'Fraunces',serif;">Contact</h2>
+        <p class="font-sans text-[var(--color-text)] opacity-80 leading-relaxed text-base">
+          Pour toute question : <a href="mailto:contact@icam-conciergerie.com" class="text-[var(--color-accent)] hover:underline">contact@icam-conciergerie.com</a>
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="py-8 px-4 border-t border-[var(--color-border)]" style="background-color:#EBE5DB;">
+    <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-sans text-xs text-[var(--color-text)] opacity-50">© 2026 ICAM GROUP SRL · Tous droits réservés</p>
+      <nav class="flex gap-4 flex-wrap justify-center" aria-label="Liens légaux">
+        <a href="/mentions-legales" class="font-sans text-xs text-[var(--color-text)] opacity-60 hover:text-[var(--color-accent)] hover:opacity-100 transition-colors">Mentions légales</a>
+        <a href="/politique-confidentialite" class="font-sans text-xs text-[var(--color-text)] opacity-60 hover:text-[var(--color-accent)] hover:opacity-100 transition-colors">Confidentialité</a>
+        <a href="/cookies" class="font-sans text-xs text-[var(--color-accent)]">Cookies</a>
+      </nav>
+    </div>
+  </footer>
+</Layout>
