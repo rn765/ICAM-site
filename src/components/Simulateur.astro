@@ -338,6 +338,12 @@ const whatsappSimUrl = "https://wa.me/32471596624?text=Bonjour%2C%20j%27ai%20uti
       });
     }
 
+    // Meta Pixel — simulator_completed
+    (window as any).fbq?.('track', 'Lead', {
+      content_name: 'Simulator Completed',
+      content_category: 'simulator_result',
+    });
+
     // Scroll vers le résultat
     setTimeout(() => {
       resultBox?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

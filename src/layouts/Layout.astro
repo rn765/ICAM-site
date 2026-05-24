@@ -77,8 +77,24 @@ const schemaLD = {
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaLD)} />
 
-    <!-- META_PIXEL_PLACEHOLDER -->
-    <!-- Insérer ici le Meta Pixel lors de l'activation des campagnes -->
+    <!-- Meta Pixel — 1721388932547097 -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','1721388932547097');
+      fbq('track','PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1721388932547097&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel -->
 
     <!-- Google Analytics 4 — G-JLPNK6GMFT -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLPNK6GMFT" is:inline></script>
@@ -117,15 +133,26 @@ const schemaLD = {
         observer.observe(el);
       });
 
-      // ===== GA4 CLICK TRACKING =====
-      // Tracking par délégation sur tous les éléments [data-track]
+      // ===== CLICK TRACKING — GA4 + Meta Pixel =====
+      const FBQ_MAP: Record<string, () => void> = {
+        click_whatsapp:  () => (window as any).fbq?.('track', 'Lead',        { content_name: 'WhatsApp Contact',  content_category: 'whatsapp'  }),
+        click_simulator: () => (window as any).fbq?.('track', 'ViewContent', { content_name: 'Simulator Click',   content_category: 'simulator' }),
+        click_email:     () => (window as any).fbq?.('track', 'Contact',     { content_name: 'Email Click'        }),
+      };
+
       document.addEventListener('click', (e) => {
         const el = (e.target as Element).closest('[data-track]') as HTMLElement | null;
         if (!el) return;
-        if (typeof (window as any).gtag !== 'function') return;
-        (window as any).gtag('event', el.dataset.track, {
-          location: el.dataset.trackLocation ?? 'unknown',
-        });
+        const event = el.dataset.track as string;
+        const location = el.dataset.trackLocation ?? 'unknown';
+
+        // GA4
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', event, { location });
+        }
+
+        // Meta Pixel
+        FBQ_MAP[event]?.();
       });
 
       // Nav sticky — ombre au scroll
