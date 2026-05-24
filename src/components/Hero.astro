@@ -38,7 +38,7 @@ const whatsappUrl = "https://wa.me/32471596624?text=Bonjour%2C%20je%20souhaite%2
       class="font-sans text-white mb-10 max-w-2xl mx-auto leading-relaxed"
       style="font-size:clamp(1rem,2.5vw,1.25rem);opacity:0.9;"
     >
-      ICAM Conciergerie prend en charge la coordination complète de votre location Airbnb, Booking et autres plateformes. Vous percevez vos revenus, nous nous occupons du reste.
+      Jusqu'à +25 % de revenus locatifs. Zéro charge mentale. 100 % conforme à la réglementation bruxelloise.
     </p>
 
     <!-- Boutons CTA -->
@@ -73,6 +73,21 @@ const whatsappUrl = "https://wa.me/32471596624?text=Bonjour%2C%20je%20souhaite%2
     <p class="mt-5 text-sm font-sans" style="color:rgba(255,255,255,0.80);">
       Réponse sous 24h. Aucun engagement avant échange.
     </p>
+
+    <!-- Bandeau stats marché bruxellois -->
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px rounded-sm overflow-hidden" style="background:rgba(255,255,255,0.15);">
+      {[
+        { value: '124 €/nuit',  label: 'moyenne bruxelloise' },
+        { value: '85 %',         label: "taux d'occupation moyen" },
+        { value: '< 2 h',        label: 'réponse aux voyageurs' },
+        { value: 'BEE 2026',     label: 'conforme & taxe de séjour' },
+      ].map(s => (
+        <div class="flex flex-col items-center justify-center py-4 px-3" style="background:rgba(15,30,61,0.50);">
+          <span class="font-sans font-semibold text-white text-sm md:text-base leading-tight">{s.value}</span>
+          <span class="font-sans text-xs mt-0.5" style="color:rgba(255,255,255,0.60);">{s.label}</span>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 

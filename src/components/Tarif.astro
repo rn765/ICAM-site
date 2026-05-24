@@ -1,10 +1,46 @@
 ---
-// Section Tarifs — grille pricing 4 cards, boutons scrollent vers #simulateur
+// Section Tarifs — 3 cards avec prestations incluses, boutons → #simulateur
 const tarifs = [
-  { label: 'Studio / 1 chambre', percent: '20%' },
-  { label: '2 chambres',          percent: '22%' },
-  { label: '3 chambres',          percent: '25%' },
-  { label: 'Villa / grand bien',  percent: '30%' },
+  {
+    label: 'Studio · 1 chambre',
+    percent: '20 %',
+    tag: 'TTC',
+    services: [
+      'Photos professionnelles & annonces optimisées',
+      'Tarification dynamique (saisonnalité, événements)',
+      'Communication voyageurs 24 h/24, 7 j/7',
+      'Organisation check-in / check-out',
+      'Coordination ménage & linge de maison',
+      'Récapitulatif mensuel des revenus',
+    ],
+  },
+  {
+    label: '2 ou 3 chambres',
+    percent: '22–25 %',
+    tag: 'TTC',
+    highlight: true,
+    services: [
+      'Photos professionnelles & annonces optimisées',
+      'Tarification dynamique (saisonnalité, événements)',
+      'Communication voyageurs 24 h/24, 7 j/7',
+      'Organisation check-in / check-out',
+      'Coordination ménage & linge de maison',
+      'Reporting mensuel détaillé',
+    ],
+  },
+  {
+    label: 'Villa · Grand bien',
+    percent: '30 %',
+    tag: 'TTC',
+    services: [
+      'Photos professionnelles & annonces optimisées',
+      'Tarification dynamique (saisonnalité, événements)',
+      'Communication voyageurs 24 h/24, 7 j/7',
+      'Organisation check-in / check-out',
+      'Coordination ménage & linge de maison',
+      'Coordination maintenance & entretien des extérieurs',
+    ],
+  },
 ];
 ---
 
@@ -25,44 +61,61 @@ const tarifs = [
     </div>
     <div class="text-center mb-12 fade-in-section">
       <p class="font-sans text-[var(--color-text)] opacity-70 text-base">
-        À partir de 20% TTC sur les revenus encaissés. Frais de mise en place uniques au lancement.
+        À partir de 20 % TTC sur les revenus encaissés. Frais de mise en place uniques au lancement.
       </p>
     </div>
 
-    <!-- Grille 4 cards : 2 colonnes mobile, 4 desktop -->
-    <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-6 mb-10">
+    <!-- Grille 3 cards : 1 colonne mobile, 3 colonnes desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
       {tarifs.map((t, i) => (
         <div
-          class="fade-in-section bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm px-4 py-6 md:p-8 flex flex-col items-center text-center"
+          class={`fade-in-section flex flex-col rounded-sm border ${t.highlight ? 'border-[var(--color-accent)] shadow-xl' : 'border-[var(--color-border)]'} bg-[var(--color-card)] overflow-hidden`}
           style={`transition-delay:${i * 80}ms;`}
         >
-          <!-- Label type de bien -->
-          <span class="font-sans font-medium text-[var(--color-text)] opacity-60 text-xs md:text-sm mb-2 md:mb-3 uppercase tracking-wider leading-tight">
-            {t.label}
-          </span>
+          <!-- En-tête card -->
+          <div class={`px-6 pt-8 pb-6 ${t.highlight ? 'bg-[var(--color-primary)]' : ''}`}>
+            {t.highlight && (
+              <span class="inline-block font-sans text-xs font-semibold uppercase tracking-widest mb-3" style="color:var(--color-accent);">
+                Le plus demandé
+              </span>
+            )}
+            <p class={`font-sans font-medium text-xs uppercase tracking-wider mb-3 ${t.highlight ? 'text-white opacity-60' : 'text-[var(--color-text)] opacity-60'}`}>
+              {t.label}
+            </p>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span
+                class={`font-serif font-bold leading-none ${t.highlight ? 'text-white' : 'text-[var(--color-primary)]'}`}
+                style="font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,3.25rem);"
+                aria-label={`Commission ${t.percent} TTC`}
+              >{t.percent}</span>
+            </div>
+            <span class={`font-sans text-xs font-medium ${t.highlight ? 'text-white opacity-40' : 'text-[var(--color-text)] opacity-40'}`}>{t.tag} · tout inclus</span>
+          </div>
 
-          <!-- Pourcentage — responsive Fraunces -->
-          <span
-            class="font-serif font-bold text-[var(--color-primary)] leading-none mb-1 md:mb-2 text-4xl md:text-5xl lg:text-6xl"
-            style="font-family:'Fraunces',serif;"
-            aria-label={`Commission ${t.percent} TTC`}
-          >{t.percent}</span>
-          <span class="font-sans text-xs font-medium text-[var(--color-text)] opacity-40 mb-1">TTC</span>
+          <!-- Liste prestations -->
+          <ul class="flex flex-col gap-3 px-6 py-6 flex-1" role="list">
+            {t.services.map(s => (
+              <li class="flex items-start gap-3 font-sans text-sm text-[var(--color-text)] opacity-80">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:var(--color-accent);" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                </svg>
+                {s}
+              </li>
+            ))}
+          </ul>
 
-          <!-- Badge or laiton -->
-          <span
-            class="font-sans text-xs font-semibold uppercase tracking-widest mb-4 md:mb-6 mt-1 md:mt-2"
-            style="color:var(--color-accent);"
-          >Tout inclus</span>
-
-          <!-- Bouton scroll vers simulateur — texte court sur mobile -->
-          <button
-            class="tarif-simulateur-btn mt-auto w-full py-2 md:py-2.5 px-2 md:px-4 border border-[var(--color-accent)] text-[var(--color-accent)] font-sans font-medium text-xs md:text-sm rounded-sm hover:bg-[var(--color-accent)] hover:text-white transition-colors text-center cursor-pointer"
-            aria-label={`Estimer mes revenus pour un ${t.label}`}
-          >
-            <span class="md:hidden">Estimer</span>
-            <span class="hidden md:inline">Estimer mes revenus</span>
-          </button>
+          <!-- Bouton -->
+          <div class="px-6 pb-8">
+            <button
+              class="tarif-simulateur-btn w-full py-3 px-4 font-sans font-medium text-sm rounded-sm transition-colors cursor-pointer text-center"
+              style={t.highlight
+                ? 'background-color:var(--color-accent);color:#fff;border:1px solid var(--color-accent);'
+                : 'border:1px solid var(--color-accent);color:var(--color-accent);background:transparent;'}
+              aria-label={`Estimer mes revenus pour un ${t.label}`}
+            >
+              Estimer mes revenus
+            </button>
+          </div>
         </div>
       ))}
     </div>
