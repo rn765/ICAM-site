@@ -82,13 +82,14 @@ const whatsappUrl = "https://wa.me/32471596624?text=Bonjour%2C%20je%20souhaite%2
     <div class="fade-in-section mt-10 grid grid-cols-2 md:grid-cols-4 gap-px rounded-sm overflow-hidden" style="background:rgba(255,255,255,0.15);transition-delay:200ms;">
       {[
         { value: '124 €/nuit',  label: 'moyenne bruxelloise' },
-        { value: '85 %',         label: "taux d'occupation moyen" },
+        { value: '85 %',         label: "taux d'occupation moyen", sub: '≈ 26 nuits/mois' },
         { value: '< 2 h',        label: 'réponse aux voyageurs' },
         { value: 'BEE 2026',     label: 'conforme & taxe de séjour' },
       ].map(s => (
         <div class="flex flex-col items-center justify-center py-4 px-3" style="background:rgba(15,30,61,0.50);">
           <span class="font-sans font-semibold text-white text-sm md:text-base leading-tight">{s.value}</span>
           <span class="font-sans text-xs mt-0.5" style="color:rgba(255,255,255,0.60);">{s.label}</span>
+          {s.sub && <span class="font-sans text-xs mt-0.5" style="color:rgba(255,255,255,0.38);font-size:0.65rem;">{s.sub}</span>}
         </div>
       ))}
     </div>
